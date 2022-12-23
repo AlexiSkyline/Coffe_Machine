@@ -17,31 +17,49 @@ public class Storage {
         return water;
     }
 
-    public void setWater(int water) {
-        this.water = water;
-    }
-
     public int getMilk() {
         return milk;
-    }
-
-    public void setMilk(int milk) {
-        this.milk = milk;
     }
 
     public int getCaffe() {
         return caffe;
     }
 
-    public void setCaffe(int caffe) {
-        this.caffe = caffe;
-    }
-
     public int getCups() {
         return cups;
     }
 
-    public void setCups(int cups) {
-        this.cups = cups;
+    public void consumeResources(TypeCoffee typeCoffee) {
+        this.water -= typeCoffee.getWater() != 0 ? typeCoffee.getWater() : 0;
+        this.milk -= typeCoffee.getMilk() != 0 ? typeCoffee.getMilk() : 0;
+        this.caffe -= typeCoffee.getCoffee() != 0 ? typeCoffee.getCoffee() : 0;
+        this.cups--;
+    }
+
+    public boolean validateResources(TypeCoffee typeCoffee) {
+        if (this.water < typeCoffee.getWater()) {
+            System.out.println("Sorry, not enough water!\n");
+            return false;
+        }
+        if (this.milk < typeCoffee.getMilk()) {
+            System.out.println("Sorry, not enough milk!\n");
+            return false;
+        }
+        if (this.caffe < typeCoffee.getCoffee()) {
+            System.out.println("Sorry, not enough caffe!\n");
+            return false;
+        }
+        if (this.cups == 0) {
+            System.out.println("Sorry, not enough cups!\n");
+            return false;
+        }
+        return true;
+    }
+
+    public void updateStorage(int water, int milk, int caffe, int cups) {
+        this.water += water;
+        this.milk += milk;
+        this.caffe += caffe;
+        this.cups += cups;
     }
 }

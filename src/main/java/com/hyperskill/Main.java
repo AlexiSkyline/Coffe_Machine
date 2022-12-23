@@ -1,7 +1,5 @@
 package com.hyperskill;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         Storage storage = new Storage(400, 540, 120, 9);
